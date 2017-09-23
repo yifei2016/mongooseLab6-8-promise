@@ -32,54 +32,27 @@ var movie  = new Movie({
 //Sedan sparar du skådespelarnas id i movie-collectionen.
   });
 
-movie.save(function(err,savedMovie){
-  if(err) {
-    console.log(err);
-    return;
-  }
-  actor1.save()
-    .then(function(savedActor){
-      savedMovie.actors.push(savedActor._id);
-      actor2.save()
-        .then(function(savedActor){
-          savedMovie.actors.push(savedActor._id);
-          savedMovie.save()
-            .then(function(updatedMovie){
-              console.log('Movie ' + updatedMovie + ' saved.');
-            });
-        });
-    })
-    .catch(function(err){
-      console.log('============ Catched ERROR ==================');
-      console.error(err);
-    })
-  // actor2.save()
-  //   .then(function(savedActor){
-  //     savedMovie.actors.push(savedActor._id)
-  //   })
-  //   .catch(function(err){
-  //     console.log(err);
-  //   })
-  // actor2.save(function (err,savedActor){
-  //   if(err){
-  //      console.log(err);
-  //   }
-  //   else{
-  //     savedMovie.actors.push(savedActor._id)
-  //   }
-  // });
-
-
-  // savedMovie.save(function(err,updatedMovie){
-  //   if(err) {
-  //     console.log(err);
-  //     return;
-  //   }
-  //   console.log('Movie ' + updatedMovie + ' saved.')
-  // })
-});
-
-
-
+movie.save()
+  .then(function(savedMovie){
+    actor1.save()
+      .then(function(savedActor){
+        savedMovie.actors.push(savedActor._id);
+        actor2.save()
+          .then(function(savedActor){
+            savedMovie.actors.push(savedActor._id);
+            savedMovie.save()
+              .then(function(updatedMovie){
+                console.log('Movie ' + updatedMovie + ' saved.');
+              });
+          });
+      })
+      .catch(function(err){
+        console.log('============ Catched ERROR ==================');
+        console.error(err);
+      })
+  })
+  .catch(function(err){
+    console.log('============ Movie Save ERROR ==================');
+    console.error(err);
+  });
 //Det är när du kör save() som det skriva till databasen. Innan det lär de bara ligga i classen
-//存入collection的data首先by mongoose, connect to specified MongoDB server
