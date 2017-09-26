@@ -3,7 +3,6 @@
 //när den gjort det (räcker med console.log).
 //Du kan nu också nöja dig med att skriva hårdkodade värden som skrivs in i databasen.
 
-
 var mongoose = require('mongoose'),
     Movie = require('./movie.js');
 

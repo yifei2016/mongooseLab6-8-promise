@@ -1,14 +1,10 @@
-
-
 var mongoose = require('mongoose'),
-    Director = require('./model.js');
-
+    Director = require('./directorModel.js');
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/directorDB',{
   useMongoClient: true
 });
-
 
 var director = new Director({
   name: {
@@ -18,7 +14,7 @@ var director = new Director({
 });
 
 director.save(function (err,data){
-      if(err)
-        console.log(err)
-      console.log('data is ' + data)
+  if(err)
+  console.log(err)
+  console.log('data is ' + data)
 });

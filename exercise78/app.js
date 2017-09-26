@@ -56,3 +56,4 @@ movie.save()
     console.error(err);
   });
 //Det är när du kör save() som det skriva till databasen. Innan det lär de bara ligga i classen
+//cb 是一个套路, 第一个参数永远是err. 第二个就是返回的数据。

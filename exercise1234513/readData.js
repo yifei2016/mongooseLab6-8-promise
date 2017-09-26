@@ -1,23 +1,23 @@
-//Skapa nu en fil som enbart hämtar data från databasen,
-//exempelvis listar alla filmtitlar som du har i den.
+var express = require('express'),
+app = express();
+var router = express.Router();
 
 var mongoose = require('mongoose'),
-    Movie = require('./movie.js');
+Movie = require('./movie.js'), //created model loading here
+bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/movie',{
-      useMongoClient: true
-    });
+mongoose.connect('mongodb://localhost/movies');
 
-//db.movies.find().pretty(); mongo method
-Movie.find({}, function(error,datas) {
-  //mongoose method
-  if (error) {
-    console.log(error)
-  }
-  else{
-    datas.forEach(function(data) {
-      console.log(data.title)
-    })
-  }
-})
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+//app.use(function(req, res) {
+  //res.status(404).send({url: req.originalUrl + ' not found'})
+//});
+
+console.log("server started ====================  ");
+
+var routes = require('./routes/index.js');//importing route
+app.listen(3000);
+routes(app);
