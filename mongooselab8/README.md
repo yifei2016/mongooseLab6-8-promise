@@ -21,7 +21,7 @@ db.members.aggregate(
     },
      {
          $group: {
-           _id: "$building", // _id: null
+           _id: null
            totalyta: {$sum: "$lgh.yta" }
            //maxyta: {$max: "$lgh.yta" }
          }
