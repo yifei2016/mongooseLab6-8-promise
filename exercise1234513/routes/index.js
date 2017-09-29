@@ -4,13 +4,15 @@
 //eller bara den film som matchar id-numret (eller vad du nu vill använda som sökning)
 'use strict';
 module.exports = function(app) {
-  var todoList = require('../controller.js');
+	var todoList = require('../controller.js');
+
+	app.route('/movies')
+		.get(todoList.list_all_tasks);
 
 
-  app.route('/movies')
-    .get(todoList.list_all_tasks);
+	app.route('/movies/:taskId')
+		.get(todoList.list_matched_task);
 
-
-  app.route('/movies/:taskId')
-      .get(todoList.list_matched_task);
+ 
+	
 }
