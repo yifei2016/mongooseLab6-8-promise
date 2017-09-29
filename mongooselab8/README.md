@@ -22,7 +22,7 @@ db.members.aggregate(
      {
          $group: {
            _id: null
-           totalyta: {$sum: "$lgh.yta" }
+           totalyta: {$sum: "$lgh.yta" } //can not get expected result, must use $project 
            //maxyta: {$max: "$lgh.yta" }
          }
      },
@@ -30,6 +30,21 @@ db.members.aggregate(
         $sort: { "totalyta": -1 }  //$sort: { "maxyta": -1 }
     }
 ])
+//db.lghFakta.aggregate(
+... [
+...     {
+...         $match: {}
+...     },
+...      {
+...          $group: {
+...            _id: "$_id", 
+...            totalyta: {$sum: "$storlek" }
+...          }
+...      },
+...      {
+...         $sort: { "totalyta": -1 }
+...     }
+... ])
 
 ##Fundera lite och ändra din aggregate så att du bara visar den största lägenheten.
 
