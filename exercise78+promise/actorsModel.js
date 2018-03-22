@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
-    Movie = require('./movieModel.js');
+    // Movie = require('./movieModel.js');
 
     var actorSchema = new Schema({
           name: String,

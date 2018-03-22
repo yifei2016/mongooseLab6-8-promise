@@ -24,7 +24,7 @@ var movieSchema = new Schema({
     year: {
       type: Number
     },
-    ratings: [{type: Number}],
+    ratings: [{type: Number}],// [Number]
     actors:  [{ type: Schema.Types.ObjectId, ref: Actor}]
 });
 

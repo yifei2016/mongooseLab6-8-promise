@@ -21,8 +21,7 @@ var movieSchema = new Schema({
     type: Number,
     min: [1, '1 is the lowest rating'],
     max: [5, '5 is the highest rating']
-  }
-]
+  }]
 })
 //Observera versal initialbokstav i Movie och även Schema ovan.
 //Det är ett namn på en klass, därför denna konvention.
